@@ -32,5 +32,8 @@ router.patch("/banner-block", banner.block);
 
 const work = require('../controllers/admin/works')
 router.get("/works",work.viewWorks)
+router.patch("/works/:id",work.photographerPayment)
+router.get("/history",work.history)
+router.post("/sales",work.sales)
 
 module.exports = router;

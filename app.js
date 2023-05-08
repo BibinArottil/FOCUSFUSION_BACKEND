@@ -22,9 +22,9 @@ app.use(
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
-app.use("/", userRoutes);
-app.use("/admin", adminRoutes);
-app.use("/photographer", photographerRoutes);
+app.use("/api/", userRoutes);
+app.use("/api/admin", adminRoutes);
+app.use("/api/photographer", photographerRoutes);
 
 const port = process.env.PORT;
 const server = app.listen(port, () =>

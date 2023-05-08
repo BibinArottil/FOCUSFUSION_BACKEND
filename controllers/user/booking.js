@@ -2,10 +2,11 @@ const bookingModel = require("../../models/user/booking")
 
 exports.shootBooking=async(req,res)=>{
     try {
-        const {company , location, date ,advance ,userId } = req.body
+        const {company , location, time, date ,advance ,userId } = req.body
         const newBooking = new bookingModel({
             company,
             location,
+            time,
             date,
             advance,
             user:userId
@@ -20,7 +21,7 @@ exports.shootBooking=async(req,res)=>{
 exports.viewBooking = async (req,res)=>{
     try {
         const id = req.params.id
-        const list = await bookingModel.find({user:id}).populate("company").sort({_id:-1})
+        const list = await bookingModel.find({user:id,success:false}).populate("company").sort({_id:-1})
         res.status(200).json({data:list})
     } catch (error) {
         console.log(error);
@@ -50,7 +51,7 @@ exports.bookingCancel=async(req,res)=>{
 exports.history = async(req,res)=>{
     try {
         const id = req.params.id
-        const list = await bookingModel.find({user:id,success:true}).populate("company")
+        const list = await bookingModel.find({user:id,success:true}).populate("company").sort({_id:-1})
         res.status(200).json({data:list})
     } catch (error) {
         console.log(error);

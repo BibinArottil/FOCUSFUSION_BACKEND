@@ -31,4 +31,8 @@ router.get("/booking-history/:id",booking.history)
 router.patch("/booking-update/:id",booking.updateSuccess)
 router.patch("/booking-cancel/:id",booking.bookingCancel)
 
+const review = require("../controllers/user/review")
+router.post("/review",review.addReview)
+router.get("/review/:id",review.viewReview)
+
 module.exports = router;

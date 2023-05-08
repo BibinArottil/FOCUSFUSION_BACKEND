@@ -1,45 +1,59 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
-const bookingSchema = new mongoose.Schema({
-    company:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Photographer",
-        required:true
+const bookingSchema = new mongoose.Schema(
+  {
+    company: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Photographer",
+      required: true,
     },
-    user:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"User",
-        required:true
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
     },
-    location:{
-        type:String,
-        required:true
+    location: {
+      type: String,
+      required: true,
     },
-    date:{
-        type:Date,
-        required:true
+    time: {
+      type: String,
+      required: true,
     },
-    bookingDate:{
-        type:Date,
-        default:Date.now()
+    date: {
+      type: Date,
+      required: true,
     },
-    advance:{
-        type:Number,
-        required:true
+    bookingDate: {
+      type: Date,
+      default: Date.now(),
     },
-    totalAmount:Number,
-    status:{
-        type:String,
-        default:"Pending"
+    advance: {
+      type: Number,
+      required: true,
     },
-    advancePaid:Number,
-    balance:Number,
-    success:{
-        type:Boolean,
-        default:false
+    totalAmount: Number,
+    status: {
+      type: String,
+      default: "Pending",
+    },
+    advancePaid: Number,
+    balance: Number,
+    photographerAmount:Number,
+    success: {
+      type: Boolean,
+      default: false,
+    },
+    PhotographerPayment:{
+      type:Boolean,
+      default:false
     }
-})
+  },
+  {
+    timestamps: true,
+  }
+);
 
-const booking = mongoose.model("Booking",bookingSchema)
+const booking = mongoose.model("Booking", bookingSchema);
 
-module.exports=booking
+module.exports = booking;

@@ -26,6 +26,7 @@ const photographerSchema = new mongoose.Schema({
     required: true,
     trim: true,
   },
+  logo:String,
   initialImage: [
     {
       type: String,
@@ -61,7 +62,11 @@ const photographerSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-});
+},
+{
+  timestamps:true
+}
+);
 
 const photographer = mongoose.model("Photographer", photographerSchema);
 module.exports = photographer;
