@@ -34,5 +34,7 @@ router.patch("/booking-cancel/:id",booking.bookingCancel)
 const review = require("../controllers/user/review")
 router.post("/review",review.addReview)
 router.get("/review/:id",review.viewReview)
+router.get("/view-review/:id",review.ownReview)
+router.patch("/view-review/:id",review.ownReviewEdit )
 
 module.exports = router;

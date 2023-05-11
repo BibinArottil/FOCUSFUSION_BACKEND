@@ -30,5 +30,6 @@ router.get('/message/:chatId',message.getMessage)
 
 const reviews = require("../controllers/photographer/reviews")
 router.get("/reviews/:id",reviews.getReviews)
+router.patch("/reply/:id",reviews.reply)
 
 module.exports = router

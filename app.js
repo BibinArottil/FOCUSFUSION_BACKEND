@@ -28,7 +28,7 @@ app.use("/api/photographer", photographerRoutes);
 
 const port = process.env.PORT;
 const server = app.listen(port, () =>
-  console.log(`Sever is running at ${port}`)
+  console.log(`Server is running at ${port}`)
 ); 
 
 const io = require("socket.io")(server, {

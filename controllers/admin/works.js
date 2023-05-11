@@ -39,8 +39,9 @@ exports.history=async(req,res)=>{
 exports.sales=async(req,res)=>{
   try {
     const {from ,to}= req.body
-    console.log(from,to)
     const data = await bookingModel.find({PhotographerPayment:true,updatedAt:{$gte:from,$lt:to}}).populate('company').sort({_id:-1})
+    // const total = await bookingModel.aggregate([{$match:{$and:[{PhotographerPayment:true,updatedAt:{$gte:from,$lt:to}}]}},{$group:{_id:1}}])
+    // console.log(total)
     res.status(200).json({data:data})
   } catch (error) {
     console.log(error)

@@ -43,14 +43,12 @@ exports.login = async (req, res) => {
             const passwordMatch = await bcrypt.compare(password, data.password);
             if (data.email === email && passwordMatch === true) {
               const photographerToken = createToken(data._id);
-              res
-                .status(200)
-                .json({
-                  message: "Photographer login successful",
-                  success: true,
-                  photographerToken,
-                  photographer: data,
-                });
+              res.status(200).json({
+                message: "Photographer login successful",
+                success: true,
+                photographerToken,
+                photographer: data,
+              });
             } else {
               res.status(401).json("Email or Password invalid");
             }
@@ -83,7 +81,6 @@ exports.photographerVerifyToken = async (req, res) => {
       process.env.JWT_SECRET_PHOTOGRAPHER
     );
     const photographerId = decoded._id;
-    console.log(photographerId);
     await PhotographerModel.findById(photographerId).then((photographer) => {
       if (photographer) {
         return res.status(200).json({ photographer: true });

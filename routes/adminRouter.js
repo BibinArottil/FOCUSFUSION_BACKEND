@@ -6,6 +6,9 @@ const admin = require("../controllers/admin/adminController");
 router.post("/admin-login", admin.adminLogin);
 router.post("/verify-token", admin.adminVerifyToken);
 
+const dashboard = require("../controllers/admin/dashboard")
+router.get("/dashboard",dashboard.count)
+
 const photographers = require("../controllers/admin/photographers");
 router.get("/request", auth, photographers.request);
 router.post("/accept", photographers.accept);
