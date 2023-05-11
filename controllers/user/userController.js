@@ -26,7 +26,6 @@ exports.otpVerify = async (req, res) => {
     const otp = req.body.OTP;
     const number = req.body.data.mobile;
     const userData = req.body.data;
-    console.log(userData);
     const { name, mobile, email, password } = req.body.data;
     if (userData.data === "forgot") {
       const twilioStatus = await twilio.checkVerificationToken(otp, number);
