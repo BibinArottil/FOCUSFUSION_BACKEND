@@ -8,6 +8,7 @@ exports.count=async(req,res)=>{
         const photographer = await photographerModel.countDocuments({verified:true})
         const works = await bookingModel.countDocuments({status:"Completed"})
         const pending = await bookingModel.countDocuments({status:"Pending"})
+        const confirm = await bookingModel.countDocuments({status:"Confirmed"})
         const processing = await bookingModel.countDocuments({status:"Processing"})
         const cancel = await bookingModel.countDocuments({status:"Cancelled"})
         const response ={
@@ -15,6 +16,7 @@ exports.count=async(req,res)=>{
             photographer,
             works,
             pending,
+            confirm,
             processing,
             cancel
         }
