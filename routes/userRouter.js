@@ -25,6 +25,7 @@ router.get("/chat/:userId", chat.getChat);
 router.post("/get-chat", chat.userChat);
 
 const booking = require("../controllers/user/booking");
+router.get("/company-list",booking.company)
 router.post("/shoot-booking", booking.shootBooking);
 router.get("/bookings/:id",booking.viewBooking)
 router.get("/booking-history/:id",booking.history)

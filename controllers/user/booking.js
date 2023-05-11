@@ -1,4 +1,14 @@
 const bookingModel = require("../../models/user/booking");
+const photographerModel = require("../../models/photographer/photographerModel")
+
+exports.company = async(req,res)=>{
+  try {
+    const list = await photographerModel.find({verified:true,status:true})
+    res.status(200).json({data:list})
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 exports.shootBooking = async (req, res) => {
   try {
